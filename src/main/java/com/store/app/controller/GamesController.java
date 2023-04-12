@@ -9,13 +9,16 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.store.app.entity.Games;
 import com.store.app.repository.GamesRepository;
 
 @RestController
+@RequestMapping("/api")
 public class GamesController {
 	@Autowired
 	private GamesRepository gamesRepository;
@@ -23,10 +26,9 @@ public class GamesController {
 	/**
 	 * Returns list of games from database.
 	 */
-	@GetMapping(value = "/games")
+	@GetMapping(value = "/guest/games")
 	public ResponseEntity<List<Games>> getAllGames() {
 		return new ResponseEntity<List<Games>>(gamesRepository.findAll(), HttpStatus.OK);
-
 	}
 
 	/**
@@ -36,7 +38,7 @@ public class GamesController {
 	 * 
 	 */
 
-	@GetMapping(value = "/games/{id}")
+	@GetMapping(value = "/guest/games/{id}")
 	public ResponseEntity<Games> getGameById(@PathVariable(value = "id") Long id) {
 		return gamesRepository.findById(id).map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
 	}
@@ -46,7 +48,7 @@ public class GamesController {
 	 * 
 	 * @param game id
 	 */
-	@DeleteMapping(value = "games/{id}")
+	@DeleteMapping(value = "/admin/games/{id}")
 	public ResponseEntity<String> deleteGameById(@PathVariable(value = "id") Long id) {
 		if (gamesRepository.existsById(id)) {
 			gamesRepository.deleteById(id);
@@ -63,7 +65,7 @@ public class GamesController {
 	 *             releaseDate:" " }
 	 */
 
-	@PostMapping(value = "/newGame")
+	@PostMapping(value = "/admin/newGame")
 	public ResponseEntity<String> addNewGame(@RequestBody Games game) {
 		if (gamesRepository.findByTitle(game.getTitle()) == null) {
 			gamesRepository.save(game);
@@ -81,7 +83,7 @@ public class GamesController {
 	 *             releaseDate:" " }
 	 */
 
-	@PostMapping(value = "/editGame/{id}")
+	@PutMapping(value = "/admin/editGame/{id}")
 	public ResponseEntity<String> editGame(@PathVariable(value = "id") Long id, @RequestBody Games game) {
 		if (gamesRepository.existsById(id)) {
 			gamesRepository.deleteById(id);
@@ -92,4 +94,5 @@ public class GamesController {
 
 		}
 	}
+
 }
