@@ -26,9 +26,50 @@ public class GamesController {
 	/**
 	 * Returns list of games from database.
 	 */
+
 	@GetMapping(value = "/guest/games")
 	public ResponseEntity<List<Games>> getAllGames() {
 		return new ResponseEntity<List<Games>>(gamesRepository.findAll(), HttpStatus.OK);
+	}
+
+	/**
+	 * Returns list of games starting from cheapest.
+	 */
+
+	@GetMapping(value = "/guest/games/cheapest")
+	public ResponseEntity<List<Games>> getAllGamesCheapestFirst() {
+		return new ResponseEntity<List<Games>>(gamesRepository.findByOrderByPriceAsc(), HttpStatus.OK);
+	}
+
+	/**
+	 * Returns list of games from database with given title.
+	 * 
+	 * @param game category
+	 */
+
+	@GetMapping(value = "/guest/games/title/{title}")
+	public ResponseEntity<List<Games>> getGamesByTitle(@PathVariable(value = "title") String title) {
+		if (gamesRepository.findAllByTitleIgnoreCaseContaining(title).size() > 0) {
+			return new ResponseEntity<List<Games>>(gamesRepository.findAllByTitleIgnoreCaseContaining(title),
+					HttpStatus.OK);
+		} else {
+			return new ResponseEntity<List<Games>>(HttpStatus.NOT_FOUND);
+		}
+	}
+
+	/**
+	 * Returns list of games from database with given category.
+	 * 
+	 * @param game category
+	 */
+
+	@GetMapping(value = "/guest/games/genre/{genre}")
+	public ResponseEntity<List<Games>> getGamesByGenre(@PathVariable(value = "genre") String genre) {
+		if (gamesRepository.findAllByGenre(genre).size() > 0) {
+			return new ResponseEntity<List<Games>>(gamesRepository.findAllByGenre(genre), HttpStatus.OK);
+		} else {
+			return new ResponseEntity<List<Games>>(HttpStatus.NOT_FOUND);
+		}
 	}
 
 	/**
@@ -48,13 +89,14 @@ public class GamesController {
 	 * 
 	 * @param game id
 	 */
+
 	@DeleteMapping(value = "/admin/games/{id}")
 	public ResponseEntity<String> deleteGameById(@PathVariable(value = "id") Long id) {
 		if (gamesRepository.existsById(id)) {
 			gamesRepository.deleteById(id);
 			return new ResponseEntity<String>("Game succesfully deleted ", HttpStatus.OK);
 		}
-		return new ResponseEntity<String>("No game with id: " + id, HttpStatus.CONFLICT);
+		return new ResponseEntity<String>("No game with id: " + id, HttpStatus.NOT_FOUND);
 
 	}
 
@@ -90,7 +132,7 @@ public class GamesController {
 			gamesRepository.save(game);
 			return new ResponseEntity<String>("Succesfully edited game", HttpStatus.OK);
 		} else {
-			return new ResponseEntity<String>("No game with id: " + id, HttpStatus.CONFLICT);
+			return new ResponseEntity<String>("No game with id: " + id, HttpStatus.NOT_FOUND);
 
 		}
 	}
