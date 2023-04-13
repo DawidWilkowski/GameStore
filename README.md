@@ -2,7 +2,7 @@
 
 Web application for game store.
 
-API avalible at: https://gamestore-383516.uc.r.appspot.com/view
+API avalible at: https://gamestore-383516.uc.r.appspot.com/view/
 
 API for admin avalible via Postman with username: admin | password: admin
 ## Tools & Frameworks
