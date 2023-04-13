@@ -2,8 +2,9 @@
 
 Web application for game store.
 
-Deployed with Google Cloud: https://gamestore-383516.uc.r.appspot.com/
+API avalible at: https://gamestore-383516.uc.r.appspot.com/view
 
+API for admin avalible via Postman with username: admin | password: admin
 ## Tools & Frameworks
 
 **Used technologies**
@@ -22,6 +23,14 @@ Deployed with Google Cloud: https://gamestore-383516.uc.r.appspot.com/
 ### Hosting 
 * Google Cloud
 
+### Front End
+IN PROGRESS
+https://gamestore-383516.uc.r.appspot.com/view/page
+* HTML
+* CSS
+* Bootstrap
+* Thymeleaf
+
 # API
 
 ### Guest
@@ -35,9 +44,6 @@ GET /api/guest/games/title/{title}| Get all games with given title  | GET [/api/
 GET /api/guest/games/genre/{genre}| Get all games from given genre  | GET [/api/guest/games/genre/{genre}](https://gamestore-383516.uc.r.appspot.com/api/guest/games/genre/RPG)
 
 ### Admin
-
-Avalible with username: admin | password: admin
-
 
 API                               | Description                     | URL
 ----------------------------------|---------------------------------|--------------
