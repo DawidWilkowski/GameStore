@@ -39,8 +39,8 @@ API                               | Description                     | URL
 ----------------------------------|---------------------------------|--------------
 GET /api/guest/games              | Get all games                   | GET [/api/guest/games](https://gamestore-383516.uc.r.appspot.com/api/guest/games)
 GET /api/guest/games/{id}         | Get a game by ID                | GET [/api/guest/games/1](https://gamestore-383516.uc.r.appspot.com/api/guest/games/1)
-GET /api/guest/games/cheapest     | Get all games, cheapest first   | GET [/api/guest/games/cheapest](https://gamestore-383516.uc.r.appspot.com/api/products/1)
-GET /api/guest/games/title/{title}| Get all games with given title  | GET [/api/guest/games/title/{title}](https://gamestore-383516.uc.r.appspot.com/api/guest/games/title/Witcher)
+GET /api/guest/games/cheapest     | Get all games, cheapest first   | GET [/api/guest/games/cheapest](https://gamestore-383516.uc.r.appspot.com/api/guest/games/cheapest)
+GET /api/guest/games/title/{title}| Get all games with given title  | GET [/api/guest/games/title/{title}](https://gamestore-383516.uc.r.appspot.com/api/guest/games/title/Cyberpunk)
 GET /api/guest/games/genre/{genre}| Get all games from given genre  | GET [/api/guest/games/genre/{genre}](https://gamestore-383516.uc.r.appspot.com/api/guest/games/genre/RPG)
 
 ### Admin
