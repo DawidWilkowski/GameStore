@@ -2,6 +2,8 @@ package com.store.app.entity;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -30,7 +32,10 @@ public class Games {
 	private String title;
 	private float price;
 	private String genre;
+	@Column(name = "PATH_TO_IMAGE")
+	private String pathToImage;
 	@Temporal(TemporalType.DATE)
 	@Column(name = "RELEASE_DATE")
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date releaseDate;
 }

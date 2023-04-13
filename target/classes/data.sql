@@ -1,6 +1,6 @@
-INSERT INTO games (id,title,price,genre,release_Date) 
+INSERT INTO games (id,title,price,genre,path_To_Image,release_Date) 
 VALUES
-(DEFAULT,'Cyberpunk 2077',129.99,'RPG','2020-12-10'),
-(DEFAULT,'The Witcher 3',50,'RPG', '2015-05-18'),
-(DEFAULT,'Minecraft',100,'Sandbox','2016-03-11'),
-(DEFAULT,'The Binding of Isaac: Rebirth',50.99,'Roguelike','2014-01-10');
+(DEFAULT,'Cyberpunk 2077',129.99,'RPG','cyberpunk.png','2020-12-10'),
+(DEFAULT,'HAAK',50,'RPG','haak.png', '2015-05-18'),
+(DEFAULT,'Everspace',100,'Space','everspace2.png','2016-03-11'),
+(DEFAULT,'Wall World',50.99,'2D','wallWorld.png','2014-01-10');

@@ -1,14 +1,9 @@
 package com.store.app.controller;
 
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -22,6 +17,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 import com.store.app.entity.Games;
 import com.store.app.repository.GamesRepository;
 
@@ -53,26 +49,37 @@ public class GamesControllerTest {
 
 	@Test
 	public void deleteGameByIdWithoutAdmin() throws Exception {
-		mockMvc.perform(delete("/games/{id}", 2)).andExpect(status().isUnauthorized());
-	}
-
-	/**
-	 * NOT PASSING
-	 */
-	@Test
-	public void createGameTest() throws Exception {
-		DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
-		Date date = df.parse("02-02-2002");
-		Games game = new Games(null, "Testgame", 100, "Racing", date);
-		Gson gson = new Gson();
-		String jsonInString = gson.toJson(game);
-		mockMvc.perform(post("/newGame").with(user("admin").roles("ADMIN")).contentType(MediaType.APPLICATION_JSON)
-				.content(jsonInString)).andExpect(status().isOk());
+		mockMvc.perform(delete("/api/admin/games/{id}", 2)).andExpect(status().isUnauthorized());
 	}
 
 	@Test
 	@WithMockUser(roles = "ADMIN")
+	public void createGameTest() throws Exception {
+		Games game = new Games(null, "Testgame", 100, "Racing", "test.png", null);
+		Gson gson = new Gson();
+		JsonElement jsonElement = gson.toJsonTree(game);
+		jsonElement.getAsJsonObject().addProperty("releaseDate", "2012-02-02");
+		String jsonInString = gson.toJson(jsonElement);
+		mockMvc.perform(post("/api/admin/newGame").contentType(MediaType.APPLICATION_JSON).content(jsonInString))
+				.andExpect(status().isOk());
+	}
+
+//	@Test
+//	@WithMockUser(roles = "ADMIN")
+//	public void editGameTest() throws Exception {
+//		Games game = new Games(null, "Testgame", 100, "Racing", "test.png", null);
+//		Gson gson = new Gson();
+//		JsonElement jsonElement = gson.toJsonTree(game);
+//		jsonElement.getAsJsonObject().addProperty("releaseDate", "2012-02-02");
+//		String jsonInString = gson.toJson(jsonElement);
+//		mockMvc.perform(
+//				put("/api/admin/editGame/{id}", 1).contentType(MediaType.APPLICATION_JSON).content(jsonInString))
+//				.andExpect(status().isOk());
+//	}
+
+	@Test
+	@WithMockUser(roles = "ADMIN")
 	public void deleteGameByIdTest() throws Exception {
-		mockMvc.perform(delete("/games/{id}", 2)).andExpect(status().isOk());
+		mockMvc.perform(delete("/api/admin/games/{id}", 3)).andExpect(status().isOk());
 	}
 }

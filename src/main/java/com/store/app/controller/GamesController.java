@@ -33,6 +33,18 @@ public class GamesController {
 	}
 
 	/**
+	 * Returns game with given id.
+	 * 
+	 * @param game id
+	 * 
+	 */
+
+	@GetMapping(value = "/guest/games/{id}")
+	public ResponseEntity<Games> getGameById(@PathVariable(value = "id") Long id) {
+		return gamesRepository.findById(id).map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+	}
+
+	/**
 	 * Returns list of games starting from cheapest.
 	 */
 
@@ -73,18 +85,6 @@ public class GamesController {
 	}
 
 	/**
-	 * Returns game with given id.
-	 * 
-	 * @param game id
-	 * 
-	 */
-
-	@GetMapping(value = "/guest/games/{id}")
-	public ResponseEntity<Games> getGameById(@PathVariable(value = "id") Long id) {
-		return gamesRepository.findById(id).map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
-	}
-
-	/**
 	 * Delete game from database.
 	 * 
 	 * @param game id
@@ -122,7 +122,7 @@ public class GamesController {
 	 * Edits game.
 	 * 
 	 * @param game { "id": " ", "title": " ", "price": " ", genre: " ",
-	 *             releaseDate:" " }
+	 *             releaseDate:"yyyy-mm-dd " }
 	 */
 
 	@PutMapping(value = "/admin/editGame/{id}")
