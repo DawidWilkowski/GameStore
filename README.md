@@ -24,11 +24,8 @@ API for admin avalible via Postman with username: admin | password: admin
 * Google Cloud
 
 ### Front End
-IN PROGRESS
-https://gamestore-383516.uc.r.appspot.com/view/page
 * HTML
 * CSS
-* Bootstrap
 * Thymeleaf
 
 # API
