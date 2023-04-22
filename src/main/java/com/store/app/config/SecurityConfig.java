@@ -36,10 +36,14 @@ public class SecurityConfig {
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http.headers().frameOptions().disable();
 		return http.csrf(csrf -> csrf.disable()).authorizeHttpRequests(auth -> {
+			auth.requestMatchers("/").permitAll();
 			auth.requestMatchers("/h2-console/**").permitAll();
 			auth.requestMatchers("/api/guest/**").permitAll();
 			auth.requestMatchers("/images/**").permitAll();
+			auth.requestMatchers("/images/games**").permitAll();
 			auth.requestMatchers("/view/**").permitAll();
+			auth.requestMatchers("/view/page/**").permitAll();
+			auth.requestMatchers("/view/page/game/**").permitAll();
 			auth.requestMatchers("/api/admin/**").hasRole("ADMIN");
 		}).httpBasic(Customizer.withDefaults()).build();
 

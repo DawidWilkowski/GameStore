@@ -11,9 +11,23 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-<style>
+<style th:inline="text">
+.description {
+width: 25%;
+}
 .hover-effect:hover {
 	opacity: 0.9;
+}
+
+.parallax {
+	box-shadow: 0 0 200px rgba(0, 0, 0, 0.9) inset;
+	/* Set a specific height */
+	min-height: 600px;
+	/* Create the parallax scrolling effect */
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 </style>
 </head>
@@ -24,7 +38,7 @@
 		<div class="container-fluid">
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mx-auto">
-					<li class="nav-item text-center"><a th:href="@{/page}"> <img
+					<li class="nav-item text-center"><a th:href="@{/view/page}"> <img
 							th:src="@{/images/icons/606com.png}" alt="logo" width="40" />
 					</a></li>
 
@@ -88,26 +102,12 @@
 		</div>
 	</nav>
 
-
-
-	<div class="row justify-content-center">
-		<div class="col-sm-7">
-			<div class="card hover-effect" th:each="game : ${games}"
-				style="width: 240px; display: inline-block;">
-				<img class="card-img-top"
-					th:src="@{/images/games/{i}(i=${game.pathToImage})}"
-					style="width: 100%">
-				<div class="card-body">
-					<p th:text="${game.title}"></p>
-					<p th:text="${game.price}" align="right" style="font-weight: bold"></p>
-					<a th:href="@{/view/page/game/{i}(i=${game.id})}"
-						class="btn stretched-link"></a>
-				</div>
-			</div>
-
-		</div>
-
-	</div>
+	<div class="parallax"
+		th:style="'background-image: url(' + @{'/images/games/' + ${game.pathToImage}} + ');'"></div>
+<div class = "description mx-auto" style="background-color: #d9d9d9">
+<h1 th:text = ${game.title}></h1>
+<a  th:text="${game.gameDescription}" ></a>
+</div>
 
 </body>
 </html>

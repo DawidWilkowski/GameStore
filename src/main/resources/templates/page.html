@@ -100,9 +100,13 @@
 				<div class="card-body">
 					<p th:text="${game.title}"></p>
 					<p th:text="${game.price}" align="right" style="font-weight: bold"></p>
+					<a th:href="@{/view/page/game/{i}(i=${game.id})}"
+						class="btn stretched-link"></a>
 				</div>
 			</div>
+
 		</div>
+
 	</div>
 
 </body>
