@@ -1,6 +1,7 @@
 INSERT INTO games (id,title,price,genre,game_Description,path_To_Image,release_Date) 
 VALUES
 (DEFAULT,'Cyberpunk 2077',129.99,'RPG','Cyberpunk 2077 to rozgrywająca się w otwartym świecie przygoda, w której jako najemnik stajesz do walki z siłami trzęsącymi Night City. Stwórz postać i zdefiniuj własny styl gry, rozsławiaj swoje imię i odblokowuj cybernetyczne ulepszenia. Relacje, które zawiążesz, i wybory, które podejmiesz, wpłyną na twoją opowieść i historię potężnego miasta przyszłości. Tu rodzą się legendy. Jaka będzie twoja?','cyberpunk.png','2020-12-10'),
-(DEFAULT,'HAAK',50,'RPG','haak.png','', '2015-05-18'),
-(DEFAULT,'Everspace',100,'Space','','everspace2.png','2016-03-11'),
-(DEFAULT,'Wall World',50.99,'2D','','wallWorld.png','2014-01-10');
+(DEFAULT,'HAAK',50,'RPG','Platformówka akcji zrealizowana w konwencji metroidvanii. W HAAK wcielamy się w bohatera, który przemierza postapokaliptyczny świat i eliminuje zastępy przeciwników, zmierzając do bezpiecznej krainy znajdującej się na dalekim południu.','haak.png', '2015-05-18'),
+(DEFAULT,'Everspace',100,'Space','"EVERSPACE" to pełna akcji, kosmiczna strzelanka dla jednego gracza łącząca elementy typu roguelike z obłędną oprawą graficzną i urzekającą, nieliniową opowieścią. Gra zabiera cię w podróż przez ciągle zmieniający się, piękny świat pełny niespodzianek. Twoje umiejętności, doświadczenie i talent improwizacyjny będą stale poddawane próbom, gdy będziesz się dowiadywać o sobie dzięki spotkaniom z interesującymi postaciami odkrywającymi istotne elementy układanki. Każda rozgrywka będzie ekscytująca, ponieważ zmierzysz się z całkowicie nowymi sytuacjami, dzięki czemu gra wciągnie cię i porwie.','everspace2.png','2016-03-11'),
+(DEFAULT,'Wall World',50.99,'2D','Witaj w World Wall. Odkrywaj generowane proceduralnie kopalnie i fantastyczne biosfery. Znajdź zasoby i technologie otwierające drogę do cennych ulepszeń. Walcz z hordami agresywnych potworów z pomocą swojej mobilnej bazy. Dniem i nocą swobodnie odkrywaj Mur w różnych warunkach pogodowych. Znajdź pozostałości "innych" i śmiało kop tam, gdzie nikt jeszcze nie kopał.
+','wallWorld.png','2014-01-10');
