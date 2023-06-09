@@ -40,6 +40,7 @@ public class SecurityConfig {
 			auth.requestMatchers("/h2-console/**").permitAll();
 			auth.requestMatchers("/api/guest/**").permitAll();
 			auth.requestMatchers("/images/**").permitAll();
+			auth.requestMatchers("/css/**").permitAll();
 			auth.requestMatchers("/images/games/**").permitAll();
 			auth.requestMatchers("/view/**").permitAll();
 			auth.requestMatchers("/view/page/**").permitAll();
