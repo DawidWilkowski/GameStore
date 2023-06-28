@@ -9,14 +9,6 @@ import com.store.app.entity.Games;
 public interface GamesRepository extends JpaRepository<Games, Long> {
 
 	/**
-	 * Returns game with given title.
-	 * 
-	 * @param game title
-	 */
-
-	Games findByTitle(String title);
-
-	/**
 	 * Returns games with given title.
 	 * 
 	 * @param game title

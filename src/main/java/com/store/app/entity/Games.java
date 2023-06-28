@@ -12,6 +12,7 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -23,6 +24,7 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Table(name = "Games")
 public class Games {
 	@Id
@@ -39,8 +41,5 @@ public class Games {
 	@Temporal(TemporalType.DATE)
 	@Column(name = "RELEASE_DATE")
 	private Date releaseDate;
-//
-//	@OneToOne(cascade = CascadeType.ALL)
-//	@JoinColumn(name = "gameDetailsId", referencedColumnName = "id")
-//	private GamesDetails gameDetails;
+
 }

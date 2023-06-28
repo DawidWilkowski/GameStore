@@ -19,7 +19,7 @@ public class GamesServiceImpl implements GamesService {
 
 	@Override
 	public ResponseEntity<String> addNewGame(Games game) {
-		if (findByTitle(game.getTitle()) == null) {
+		if (gamesRepository.findAllByTitleIgnoreCaseContaining(game.getTitle()) == null) {
 			save(game);
 			return new ResponseEntity<String>("Succesfully added new game", HttpStatus.OK);
 		} else {
@@ -62,19 +62,8 @@ public class GamesServiceImpl implements GamesService {
 
 	}
 
-	@Override
-	public Games findByTitle(String title) {
-		return gamesRepository.findByTitle(title);
-	}
-
 	public ResponseEntity<List<Games>> getAllGames() {
 		return new ResponseEntity<List<Games>>(gamesRepository.findAll(), HttpStatus.OK);
-	}
-
-	@Override
-	public List<Games> getAllGamesCheapestFirst() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override

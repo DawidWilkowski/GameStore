@@ -17,11 +17,7 @@ public interface GamesService {
 
 	ResponseEntity<List<Games>> findByOrderByPriceAsc();
 
-	Games findByTitle(String title);
-
 	ResponseEntity<List<Games>> getAllGames();
-
-	List<Games> getAllGamesCheapestFirst();
 
 	ResponseEntity<Object> getGameById(Long id);
 
